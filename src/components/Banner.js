@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function Banner() {
     return (
-        <div className="relative md:w-4/5 mx-auto mt:3 md:mt-10 md:rounded-lg overflow-hidden">
+        <div className="relative md:w-11/12 mx-auto mt:3 md:mt-10 md:rounded-lg overflow-hidden">
             <Carousel
                 autoPlay
                 infiniteLoop
@@ -18,6 +18,9 @@ function Banner() {
                 </div>
                 <div>
                     <img loading='lazy' src="https://i.ibb.co/wLpxJSf/5867f98d-27c4-4b9f-8fce-ba45aa001ff2-jpg.webp"/>
+                </div>
+                <div>
+                    <img loading='lazy' src="https://i.ibb.co/RNVnmW7/d3d663ec-4c03-4cf4-a38e-4feca8bb20f5-jpg.webp"/>
                 </div>
             </Carousel>
         </div>
