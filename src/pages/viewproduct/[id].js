@@ -56,7 +56,7 @@ function ViewProduct({products}) {
                         <div className="flex place-items-center">
                             <div className="flex my-2">
                                 <MinusCircleIcon className="w-4 text-gray-300"/>
-                                <input type="text" value="1" className="w-10 text-center"/>
+                                <input type="text" readOnly value="1" className="w-10 text-center"/>
                                 <PlusCircleIcon className="w-4 text-tokped_green"/>
                             </div>
                             <div className="stok mx-4 text-sm">

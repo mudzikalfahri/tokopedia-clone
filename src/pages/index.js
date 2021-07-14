@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Product from "../components/Product";
 
 export default function Home({products}) {
+
   return (
     <div>
       <Head>
@@ -24,7 +25,7 @@ export default function Home({products}) {
 
 export async function getServerSideProps(context) {
   const products = await fetch('https://fakestoreapi.com/products/').then(
-    (res) => res.json() );
+    (res) => res.json());
     return { props: {
       products: products,
     } };
