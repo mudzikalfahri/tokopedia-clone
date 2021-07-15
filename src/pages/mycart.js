@@ -4,13 +4,17 @@ import Header from "../components/Header";
 import Image from 'next/image';
 import { TrashIcon, BadgeCheckIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { MinusCircleIcon, PlusCircleIcon, ReceiptTaxIcon } from "@heroicons/react/outline";
+import Head from "next/head";
 
 function MyCart() {
 
-    const cartitems = useSelector(selectItems);
+    const cartItems = useSelector(selectItems);
 
     return (
         <div>
+            <Head>
+                <title>Keranjang Belanja</title>
+            </Head>
             <Header />
             
             <main className="px-5 md:px-0 md:w-10/12 mx-auto mt-32 grid grid-rows-2 grid-cols-2 md:grid-cols-3 md:grid-rows-1">
@@ -18,15 +22,16 @@ function MyCart() {
                 <div className="col-span-2 flex flex-col place-items-center md:inline">
                     <h1 className="text-xl font-bold text-gray-700">Keranjang</h1>
                     <div className="w-11/12">
-                        <div className="p-4 mt-4 shadow-md">
+                        {cartItems.map((item) => (
+                            <div className="p-4 mt-4 shadow-md">
                             <h2 className="text-sm font-bold text-gray-700 mb-0.5 flex place-items-center"><span><BadgeCheckIcon className="w-4 h-4 text-purple-800 mr-1"/></span>Tokped Store</h2>
                             <p className="text-sm font-normal text-gray-400">Jakarta Utara</p>
                             <div className="my-4 flex">
-                                <Image width={80} height={80} src="https://i.ibb.co/cy7h5R5/476ce1c4-3b37-4cf4-9ce6-b63584889140.jpg" className="rounded-md"/>
+                                <Image width={80} height={80} src={item.image} className="rounded-md" objectFit="contain"/>
                                 <div className="px-3 flex flex-col justify-between">
-                                    <p className="text-md text-gray-600">FLIP LED Night Lampu Tidur - 1pcs</p>
+                                    <p className="text-md text-gray-600">{item.title} - 1pcs</p>
                                     <p className="text-sm text-gray-600">1pcs</p>
-                                    <p className="text-sm font-bold text-gray-700">Rp149.000</p>
+                                    <p className="text-sm font-bold text-gray-700">Rp{item.price}rb</p>
                                 </div>
 
                             </div>
@@ -40,6 +45,8 @@ function MyCart() {
                                 </div>
                             </div>
                         </div>
+                        ))}
+                        
                     </div>
                 </div>
 
@@ -56,18 +63,18 @@ function MyCart() {
                         <div className="p-3">
                             <h2 className="font-bold text-gray-700 mb-1">Ringkasan belanja</h2>
                             <div className="flex justify-between py-3">
-                                <p className="text-gray-400">Total Harga(1 barang)</p>
-                                <p className="text-gray-400">Rp.149.000</p>
+                                <p className="text-gray-400">Total Harga({cartItems.length} barang)</p>
+                                <p className="text-gray-400">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price),0)}rb</p>
                             </div>
                             <hr className="my-1"/>
                             <div className="flex justify-between py-3">
                                 <p className="font-bold text-gray-700">Total Harga</p>
-                                <p className="font-bold text-gray-700">Rp.149.000</p>
+                                <p className="font-bold text-gray-700">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price),0)}rb</p>
                             </div>
                             
                         </div>
                         <div className="flex justify-center mb-4">
-                            <button className="w-11/12 py-3 rounded-md bg-tokped_green filter hover:contrast-75">
+                            <button className="w-11/12 py-3 rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
                                 <p className="text-md font-bold text-white">Beli (1)</p>
                             </button>
                         </div>

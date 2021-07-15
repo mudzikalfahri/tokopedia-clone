@@ -9,7 +9,7 @@ function Category() {
             <div className="grid grid-cols-4 md:grid-cols-6 gap-4 gap-y-5">
                 {categoryData.map(cat => (
                     <div key={cat.id} className="">
-                        <div className=" rounded-md overflow-hidden">
+                        <div className="filter hover:brightness-90 duration-500 rounded-md overflow-hidden">
                             <img src={cat.img}/>
                         </div>
                         <p className="font-semibold text-xs md:text-sm text-center mt-1">{cat.name}</p>

@@ -31,7 +31,9 @@ function Header() {
             {/* bottom nav */}
            <div className="px-5 lg:px-7 py-1 w-full h-auto flex place-items-center text-gray-500 shadow-md justify-between md:justify-items-start">
                 <Link href="/">
-                    <Image width={150} height={50} className='cursor-pointer' objectFit="contain" src="https://i.ibb.co/rvbmzzW/Logo-Tokopedia.png"/>
+                    <div className="flex place-items-center">
+                        <Image width={150} height={50} className='cursor-pointer' objectFit="contain" src="https://i.ibb.co/rvbmzzW/Logo-Tokopedia.png"/>
+                    </div>
                 </Link>
                <p className='hidden md:inline text-xs mx-3 py-1 px-2 align-middle hover:bg-gray-100 rounded-sm hover:text-tokped_green duration-200 cursor-pointer'>Kategori</p>
                <SearchBox />
@@ -39,7 +41,7 @@ function Header() {
                     <Link href="/mycart">
                         <div className="relative w-8 h-8 flex place-items-center justify-center rounded-md hover:bg-gray-100 cursor-pointer">
                             <ShoppingCartIcon className="h-5 w-5 text-gray-500" />
-                            <span className="absolute border border-white min-w-4 w-4 h-4 flex place-items-center justify-center top-0 right-0 rounded-lg text-white text-xs bg-red-500">{basketItems.length}</span>
+                            <span className={` ${basketItems.length>0 ? "inline" : "hidden"} absolute border border-white min-w-4 w-4 h-4 flex place-items-center justify-center top-0 right-0 rounded-lg text-white text-xs bg-red-500`}>{basketItems.length}</span>
                         </div>
                     </Link>
                     <div className="w-8 h-8 flex place-items-center justify-center rounded-md hover:bg-gray-100 cursor-pointer">

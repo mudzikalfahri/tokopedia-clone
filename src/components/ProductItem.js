@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
-import { StarIcon } from '@heroicons/react/solid';
+import { BadgeCheckIcon, StarIcon } from '@heroicons/react/solid';
 import Link from 'next/link'
 
-function ProductItem({product, id}) {
+function ProductItem({product}) {
     return (
-        <Link href={'/viewproduct/' + id}>
+        <Link href={'/viewproduct/' + product.id}>
             <div className="flex flex-col p-3 shadow-md border rounded-md cursor-pointer group" >
                 <div className="flex place-items-center p-3 justify-center">
                     <Image src={product.image} height={150} width={150} objectFit="contain"/> 
@@ -15,7 +15,8 @@ function ProductItem({product, id}) {
                 <p className="text-xs font-semibold text-tokped_green bg-green-100 w-min p-1 rounded-sm mb-1">Cashback</p>
                 <div className="h-5 overflow-hidden relative">
                     <p className="absolute top-0 group-hover:-top-8 duration-300 text-xs text-gray-400 pb-1">Indonesia</p>
-                    <p className="absolute top-8 group-hover:top-0 duration-300 text-xs text-gray-400 pb-1">Tokped Store</p>
+                    <p className="absolute top-8 group-hover:top-0 duration-300 text-xs text-gray-400 pb-1 flex place-items-center">
+                    <span><BadgeCheckIcon className="w-3 h-3 text-purple-700 mr-0.5"/></span>Tokped Store</p>
                 </div>
                 <div className="flex place-items-center pb-1">
                     <div className="flex place-items-center border-r pr-1 border-gray-400">

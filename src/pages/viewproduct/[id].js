@@ -2,14 +2,16 @@ import Header from '../../components/Header';
 import Image from 'next/image';
 import { StarIcon, PlusCircleIcon, MinusCircleIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-import { addToBasket } from '../../slices/basketSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToBasket} from '../../slices/basketSlice';
+import Head from 'next/head';
 
 
 function ViewProduct({products}) {
+    
     const router = useRouter();
     const {id} = router.query;
-    const product = products[id];
+    const product = products.find(product => product.id==id)
     const dispatch = useDispatch();
 
     const addItemToBasket = () => {
@@ -18,6 +20,9 @@ function ViewProduct({products}) {
 
     return (
         <div>
+            <Head>
+                <title>Product - {product.title}</title>
+            </Head>
             <Header />
             <main className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 gap-x-5 p-5 max-w-screen-lg mx-auto mt-28">
                 <div className="">
@@ -66,12 +71,12 @@ function ViewProduct({products}) {
                         {/* subtotal */}
                         <div className="flex place-items-center justify-between">
                             <p className="text-md text-gray-400">Subtotal</p>
-                            <div className="my-2 text-lg font-bold text-gray-700">Rp1.799.000</div>
+                            <div className="my-2 text-lg font-bold text-gray-700">Rp {product.price}rb</div>
                         </div>
                         {/* button */}
                         <div className="flex">
-                            <button className="py-2 rounded-md px-3 border border-tokped_green text-sm font-bold text-tokped_green m-2">Beli Langsung</button>
-                            <button onClick={addItemToBasket} className="py-2 rounded-md px-3 m-2 bg-tokped_green text-sm font-bold text-white">+ Keranjang</button>
+                            <button className="py-2 rounded-md px-3 border border-tokped_green focus:outline-none text-sm font-bold text-tokped_green m-2">Beli Langsung</button>
+                            <button onClick={addItemToBasket} className="py-2 focus:outline-none filter hover:brightness-95 rounded-md px-3 m-2 bg-tokped_green text-sm font-bold text-white">+ Keranjang</button>
                         </div>
 
                     </div>
