@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { TrashIcon, BadgeCheckIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { MinusCircleIcon, PlusCircleIcon, ReceiptTaxIcon } from "@heroicons/react/outline";
 import Head from "next/head";
+import Link from "next/link";
 
 function MyCart() {
 
@@ -17,10 +18,23 @@ function MyCart() {
             </Head>
             <Header />
             
+            {!cartItems.length>0 ? (
+                <div className="px-5 md:px-0 md:w-10/12 mx-auto mt-32 flex flex-col place-items-center">
+                    <Image src="https://i.ibb.co/KhtBy5R/60adc47d.jpg" width={200} height={200} objectFit="contain"/>
+                    <h1 className="text-2xl font-bold text-gray-700 mb-2.5 text-center">Wah, keranjang belanjamu kosong</h1>
+                    <h2 className="text-gray-400 mb-4">Yuk, isi dengan barang-barang impianmu!</h2>
+                    <Link href="/">
+                        <button className="px-14 py-2 focus:outline-none rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
+                            <p className="text-md font-bold text-white">Mulai Belanja</p>
+                        </button>
+                    </Link>
+                </div>
+            ):(
             <main className="px-5 md:px-0 md:w-10/12 mx-auto mt-32 grid grid-rows-2 grid-cols-2 md:grid-cols-3 md:grid-rows-1">
                 {/* leftside */}
                 <div className="col-span-2 flex flex-col place-items-center md:inline">
                     <h1 className="text-xl font-bold text-gray-700">Keranjang</h1>
+                    
                     <div className="w-11/12">
                         {cartItems.map((item) => (
                             <div className="p-4 mt-4 shadow-md">
@@ -81,6 +95,7 @@ function MyCart() {
                     </div>
                 </div>
             </main>
+            )}
         </div>
     )
 }

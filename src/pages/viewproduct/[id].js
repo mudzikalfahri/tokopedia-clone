@@ -24,7 +24,7 @@ function ViewProduct({products}) {
                 <title>Product - {product.title}</title>
             </Head>
             <Header />
-            <main className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 gap-x-5 p-5 max-w-screen-lg mx-auto mt-28">
+            <main className="grid grid-cols-2 grid-rows-1 md:grid-cols-3 md:grid-rows-1 gap-x-5 p-5 max-w-screen-lg mx-auto mt-28">
                 <div className="">
                     <Image className="rounded-md overflow-hidden" width={250} height={250} objectFit="contain" src={product.image}/>
                 </div>
@@ -49,7 +49,7 @@ function ViewProduct({products}) {
                 </div>
 
 
-                <div className="mt-4 md:mt-0 col-span-2 md:col-span-1 flex justify-center">
+                <div className="mt-4 fixed bottom-0 md:w-auto md:static bg-white w-full mb-2 md:mt-0 col-span-2 md:col-span-1 md:flex justify-center">
                     <div className="w-11/12 flex flex-col border border-gray-300 rounded-md p-3">
                         {/* jumlah catatan */}
                         <div className="flex place-items-center justify-between">
@@ -74,9 +74,9 @@ function ViewProduct({products}) {
                             <div className="my-2 text-lg font-bold text-gray-700">Rp {product.price}rb</div>
                         </div>
                         {/* button */}
-                        <div className="flex">
-                            <button className="py-2 rounded-md px-3 border border-tokped_green focus:outline-none text-sm font-bold text-tokped_green m-2">Beli Langsung</button>
-                            <button onClick={addItemToBasket} className="py-2 focus:outline-none filter hover:brightness-95 rounded-md px-3 m-2 bg-tokped_green text-sm font-bold text-white">+ Keranjang</button>
+                        <div className="flex w-full">
+                            <button className="w-1/2 md:w-auto py-2 rounded-md px-3 border border-tokped_green focus:outline-none text-sm font-bold text-tokped_green m-2">Beli Langsung</button>
+                            <button onClick={addItemToBasket} className="w-1/2 md:w-auto py-2 focus:outline-none filter hover:brightness-95 rounded-md px-3 m-2 bg-tokped_green text-sm font-bold text-white">+ Keranjang</button>
                         </div>
 
                     </div>
