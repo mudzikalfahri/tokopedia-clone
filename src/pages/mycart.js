@@ -6,6 +6,7 @@ import { TrashIcon, BadgeCheckIcon, ChevronRightIcon } from "@heroicons/react/so
 import { MinusCircleIcon, PlusCircleIcon, ReceiptTaxIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 function MyCart() {
 
@@ -96,6 +97,7 @@ function MyCart() {
                 </div>
             </main>
             )}
+            <Footer />
         </div>
     )
 }

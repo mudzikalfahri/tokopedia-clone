@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToBasket} from '../../slices/basketSlice';
 import Head from 'next/head';
+import Footer from '../../components/Footer';
 
 
 function ViewProduct({products}) {
@@ -65,7 +66,7 @@ function ViewProduct({products}) {
                                 <PlusCircleIcon className="w-4 text-tokped_green"/>
                             </div>
                             <div className="stok mx-4 text-sm">
-                                Stok <span className="font-bold">39</span>
+                                Stok <span className="font-bold">999+</span>
                             </div>
                         </div>
                         {/* subtotal */}
@@ -82,6 +83,7 @@ function ViewProduct({products}) {
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     )
 }
