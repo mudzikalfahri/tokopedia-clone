@@ -5,6 +5,7 @@ import Category from "../components/Category";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Product from "../components/Product";
+import { AnnotationIcon } from "@heroicons/react/solid";
 
 export default function Home({products}) {
 
@@ -34,13 +35,15 @@ export default function Home({products}) {
             <Banner />
             <Category />
             <Product products={products}/>
+              <img src="https://i.ibb.co/8stXS7P/FLOATING-ICON-JANUARY-150x150.gif" className="w-24 fixed bottom-24 right-14" />  
+              <div className="bg-white p-2 px-5 rounded-full flex mt-2 mr-3 fixed bottom-10 right-14 shadow-lg font-bold text-tokped_green text-lg border-t border-gray-100 cursor-pointer">
+                <AnnotationIcon className="w-7 mr-2 text-tokped_green"/>
+                Chat
+                </div>
           </main>
           <Footer />
         </>
       )}
-      
-      
-      
     </div>
   );
 }

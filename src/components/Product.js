@@ -9,7 +9,8 @@ function Product({products}) {
                 {products.map((product , i) => (
                     <ProductItem product={product} key={i}/>
                 ))}
-            </div>      
+            </div>
+                
         </div>
     )
 }
