@@ -1,6 +1,6 @@
 import Header from '../../components/Header';
 import Image from 'next/image';
-import { StarIcon, PlusCircleIcon, MinusCircleIcon, ChevronUpIcon } from '@heroicons/react/solid';
+import { StarIcon, PlusCircleIcon, MinusCircleIcon, ChevronUpIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToBasket} from '../../slices/basketSlice';
@@ -25,7 +25,12 @@ function ViewProduct({products}) {
                 <title>Product - {product.title}</title>
             </Head>
             <Header />
-            <main className="grid grid-cols-2 grid-rows-1 md:grid-cols-3 md:grid-rows-1 gap-x-5 p-5 max-w-screen-lg mx-auto mt-28">
+            <div className="max-w-screen-lg mx-auto mt-28 flex place-items-center">
+                <p className="text-sm font-normal text-tokped_green">Home</p>
+                <p className="flex place-items-center text-sm font-normal text-tokped_green"><ChevronRightIcon className="h-4 w-4 text-gray-400 mx-1"/>{product.category}</p>
+                <p className="flex place-items-center text-sm font-normal text-gray-500"><ChevronRightIcon className="h-4 w-4 text-gray-400 mx-1"/><p className="w-52 line-clamp-1">{product.title}</p></p>
+            </div>
+            <main className="grid grid-cols-2 grid-rows-1 md:grid-cols-3 md:grid-rows-1 gap-x-5 p-5 max-w-screen-lg mx-auto mt-4">
                 <div className="">
                     <Image className="rounded-md overflow-hidden" width={250} height={250} objectFit="contain" src={product.image}/>
                 </div>
@@ -50,8 +55,9 @@ function ViewProduct({products}) {
                 </div>
 
 
-                <div className="mt-4 fixed bottom-0 md:w-auto md:static bg-white w-full mb-2 md:mt-0 col-span-2 md:col-span-1 md:flex justify-center">
-                    <div className="w-11/12 flex flex-col border border-gray-300 rounded-md p-3">
+                <div className="mt-4 fixed bottom-0 md:w-auto md:static bg-white w-full mb-2 md:mt-0 col-span-2 md:col-span-1">
+                    <div className="w-11/12 md:h-auto flex flex-col border border-gray-300 rounded-md p-3">
+                    
                         {/* jumlah catatan */}
                         <div className="flex place-items-center justify-between">
                             <p className="font-bold text-md text-gray-700">Atur jumlah dan catatan</p>
