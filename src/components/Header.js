@@ -41,7 +41,7 @@ function Header() {
                     <Link href="/mycart">
                         <div className="relative w-8 h-8 flex place-items-center justify-center rounded-md hover:bg-gray-100 cursor-pointer">
                             <ShoppingCartIcon className="h-5 w-5 text-gray-500" />
-                            <span className={` ${basketItems.length>0 ? "inline" : "hidden"} absolute border border-white min-w-4 w-4 h-4 flex place-items-center justify-center top-0 right-0 rounded-lg text-white text-xs bg-red-500`}>{basketItems.length}</span>
+                            <span className={` ${basketItems.length ? "inline" : "hidden"} absolute border border-white min-w-4 w-4 h-4 flex place-items-center justify-center top-0 right-0 rounded-lg text-white text-xs bg-red-500`}>{basketItems.reduce((quantity, cart) => (quantity + cart.quantity),0)}</span>
                         </div>
                     </Link>
                     <div className="w-8 h-8 flex place-items-center justify-center rounded-md hover:bg-gray-100 cursor-pointer">

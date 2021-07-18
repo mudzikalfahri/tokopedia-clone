@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { selectItems } from "../slices/basketSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromBasket, selectItems } from "../slices/basketSlice";
 import Header from "../components/Header";
 import Image from 'next/image';
 import { TrashIcon, BadgeCheckIcon, ChevronRightIcon } from "@heroicons/react/solid";
@@ -11,6 +11,11 @@ import Footer from "../components/Footer";
 function MyCart() {
 
     const cartItems = useSelector(selectItems);
+    const dispatch = useDispatch();
+
+    const remove = (product) => {
+        dispatch(removeFromBasket(product))
+    }
 
     return (
         <div>
@@ -44,18 +49,18 @@ function MyCart() {
                             <div className="my-4 flex">
                                 <Image width={80} height={80} src={item.image} className="rounded-md" objectFit="contain"/>
                                 <div className="px-3 flex flex-col justify-between">
-                                    <p className="text-md text-gray-600">{item.title} - 1pcs</p>
-                                    <p className="text-sm text-gray-600">1pcs</p>
-                                    <p className="text-sm font-bold text-gray-700">Rp{item.price}rb</p>
+                                    <p className="text-md text-gray-600">{item.title} - {item.quantity}pcs</p>
+                                    <p className="text-sm text-gray-600">{item.quantity}pcs</p>
+                                    <p className="text-sm font-bold text-gray-700">Rp{item.price * item.quantity}rb</p>
                                 </div>
 
                             </div>
                             <div className="flex place-items-center justify-between">
                                 <p className="text-xs font-medium text-tokped_green">Tulis catatan untuk barang ini</p>
                                 <div className="flex my-2">
-                                <TrashIcon className="w-6 h-6 text-gray-400 mr-10"/>
+                                <TrashIcon onClick={() => remove(item)} className="cursor-pointer w-6 h-6 text-gray-400 mr-10"/>
                                 <MinusCircleIcon className="w-6 text-gray-300"/>
-                                <input type="text" readOnly value="1" className="w-10 text-center"/>
+                                <input type="text" readOnly value={item.quantity} className="w-10 text-center"/>
                                 <PlusCircleIcon className="w-6 text-tokped_green"/>
                                 </div>
                             </div>
@@ -78,19 +83,19 @@ function MyCart() {
                         <div className="p-3">
                             <h2 className="font-bold text-gray-700 mb-1">Ringkasan belanja</h2>
                             <div className="flex justify-between py-3">
-                                <p className="text-gray-400">Total Harga({cartItems.length} barang)</p>
-                                <p className="text-gray-400">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price),0)}rb</p>
+                                <p className="text-gray-400">Total Harga({cartItems.reduce((q,i) => (q + i.quantity),0)} barang)</p>
+                                <p className="text-gray-400">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price * cartItem.quantity),0)}rb</p>
                             </div>
                             <hr className="my-1"/>
                             <div className="flex justify-between py-3">
                                 <p className="font-bold text-gray-700">Total Harga</p>
-                                <p className="font-bold text-gray-700">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price),0)}rb</p>
+                                <p className="font-bold text-gray-700">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price * cartItem.quantity),0)}rb</p>
                             </div>
                             
                         </div>
                         <div className="flex justify-center mb-4">
                             <button className="w-11/12 py-3 rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
-                                <p className="text-md font-bold text-white">Beli (1)</p>
+                                <p className="text-md font-bold text-white">Beli ({cartItems.length})</p>
                             </button>
                         </div>
                     </div>

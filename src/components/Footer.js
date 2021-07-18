@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <div class="grid grid-cols-3 grid-rows-3 p-4 md:p-14 gap-x-3 gap-y-2 md:grid-cols-6 md:grid-rows-1 border-t border-gray-300 mt-20 max-w-screen-2xl mx-auto">
+        <div className="grid grid-cols-3 grid-rows-3 p-4 md:p-14 gap-x-3 gap-y-2 md:grid-cols-6 md:grid-rows-1 border-t border-gray-300 mt-20 max-w-screen-2xl mx-auto">
             <div className="h-52">
                 <h2 className="font-bold text-gray-700 text-lg mb-3 mt-2 ">Tokopedia</h2>
                 <ul className="text-gray-500 text-sm">
