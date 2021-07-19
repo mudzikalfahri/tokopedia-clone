@@ -22,6 +22,7 @@ export default function Home({products}) {
     <div>
       <Head>
         <title>Tokopedia</title>
+        <link rel="icon" href="https://i.ibb.co/JdFnhW3/favicon.png" />
       </Head>
       { loading ? (
         <div className="w-full h-screen flex justify-center place-items-center relative">
@@ -31,15 +32,15 @@ export default function Home({products}) {
       ) : (
         <>
           <Header />
-          <main className="max-w-screen-2xl mx-auto mt-32">
+          <main className="max-w-screen-2xl mx-auto mt-28">
             <Banner />
             <Category />
             <Product products={products}/>
-              <img src="https://i.ibb.co/8stXS7P/FLOATING-ICON-JANUARY-150x150.gif" className="w-24 fixed bottom-24 right-14" />  
-              <div className="bg-white p-2 px-5 rounded-full flex mt-2 mr-3 fixed bottom-10 right-14 shadow-lg font-bold text-tokped_green text-lg border-t border-gray-100 cursor-pointer">
-                <AnnotationIcon className="w-7 mr-2 text-tokped_green"/>
-                Chat
-                </div>
+            <img src="https://i.ibb.co/8stXS7P/FLOATING-ICON-JANUARY-150x150.gif" className="w-24 fixed bottom-24 right-3 md:right-14" />  
+            <div className="bg-white py-2 px-5 rounded-full flex mt-2 mr-3 fixed bottom-10 right-3 md:right-14 shadow-lg font-bold text-tokped_green text-lg border-t border-gray-100 cursor-pointer">
+              <AnnotationIcon className="w-7 mr-2 text-tokped_green"/>
+              Chat
+            </div>
           </main>
           <Footer />
         </>

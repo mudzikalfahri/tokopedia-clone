@@ -25,10 +25,10 @@ function ViewProduct({products}) {
                 <title>Product - {product.title}</title>
             </Head>
             <Header />
-            <div className="max-w-screen-lg mx-auto mt-28 flex place-items-center">
+            <div className="pl-2 max-w-screen-lg mx-auto mt-28 flex place-items-center">
                 <p className="text-sm font-normal text-tokped_green">Home</p>
-                <p className="flex place-items-center text-sm font-normal text-tokped_green"><ChevronRightIcon className="h-4 w-4 text-gray-400 mx-1"/>{product.category}</p>
-                <p className="flex place-items-center text-sm font-normal text-gray-500"><ChevronRightIcon className="h-4 w-4 text-gray-400 mx-1"/><p className="w-52 line-clamp-1">{product.title}</p></p>
+                <p className="flex place-items-center text-sm font-normal text-tokped_green line"><ChevronRightIcon className="h-4 w-4 text-gray-400 mx-1"/>{product.category}</p>
+                <p className="flex place-items-center text-sm font-normal text-gray-500"><ChevronRightIcon className="h-4 w-4 text-gray-400 mx-1"/><span className="w-52 line-clamp-1">{product.title}</span></p>
             </div>
             <main className="grid grid-cols-2 grid-rows-1 md:grid-cols-3 md:grid-rows-1 gap-x-5 p-5 max-w-screen-lg mx-auto mt-4">
                 <div className="">
