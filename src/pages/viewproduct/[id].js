@@ -2,8 +2,8 @@ import Header from '../../components/Header';
 import Image from 'next/image';
 import { StarIcon, PlusCircleIcon, MinusCircleIcon, ChevronUpIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import { addToBasket} from '../../slices/basketSlice';
+import { useDispatch } from 'react-redux';
+import { addToBasket } from '../../slices/basketSlice';
 import Head from 'next/head';
 import Footer from '../../components/Footer';
 

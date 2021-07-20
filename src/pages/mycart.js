@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromBasket, selectItems } from "../slices/basketSlice";
+import { minusItem, plusItem, removeFromBasket, selectItems } from "../slices/basketSlice";
 import Header from "../components/Header";
 import Image from 'next/image';
 import { TrashIcon, BadgeCheckIcon, ChevronRightIcon } from "@heroicons/react/solid";
@@ -14,8 +14,17 @@ function MyCart() {
     const dispatch = useDispatch();
 
     const remove = (product) => {
-        dispatch(removeFromBasket(product))
-    }
+        dispatch(removeFromBasket(product));
+    };
+
+    const plus = (i) => {
+        dispatch(plusItem(i));;
+    };
+
+    const minus = (i) => {
+        dispatch(minusItem(i));
+    };
+
 
     return (
         <div>
@@ -42,7 +51,7 @@ function MyCart() {
                     <h1 className="text-xl font-bold text-gray-700">Keranjang</h1>
                     
                     <div className="w-11/12">
-                        {cartItems.map((item) => (
+                        {cartItems.map((item, idx) => (
                             <div className="p-4 mt-4 shadow-md">
                             <h2 className="text-sm font-bold text-gray-700 mb-0.5 flex place-items-center"><span><BadgeCheckIcon className="w-4 h-4 text-purple-800 mr-1"/></span>Tokped Store</h2>
                             <p className="text-sm font-normal text-gray-400">Jakarta Utara</p>
@@ -59,9 +68,9 @@ function MyCart() {
                                 <p className="text-xs font-medium text-tokped_green">Tulis catatan untuk barang ini</p>
                                 <div className="flex my-2">
                                 <TrashIcon onClick={() => remove(item)} className="cursor-pointer w-6 h-6 text-gray-400 mr-10"/>
-                                <MinusCircleIcon className="w-6 text-gray-300"/>
-                                <input type="text" readOnly value={item.quantity} className="w-10 text-center"/>
-                                <PlusCircleIcon className="w-6 text-tokped_green"/>
+                                <MinusCircleIcon onClick={() => {if (item.quantity > 1) minus(idx)}} className={item.quantity>1 ? `w-6 text-tokped_green cursor-pointer disabled` : `w-6 text-gray-400 cursor-default`}/>
+                                <input type="text" readOnly value={item.quantity} className="w-10 text-center focus:outline-none"/>
+                                <PlusCircleIcon className="w-6 text-tokped_green cursor-pointer" onClick={() => plus(idx)}/>
                                 </div>
                             </div>
                         </div>

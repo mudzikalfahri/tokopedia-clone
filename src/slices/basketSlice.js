@@ -31,10 +31,16 @@ export const basketSlice = createSlice({
       state.items = state.items.filter(
         item => item.id !== action.payload.id)
     },
+    plusItem: (state, action) => {
+      [...state.items, state.items[action.payload].quantity += 1]
+    },
+    minusItem: (state, action) => {
+      [...state.items, state.items[action.payload].quantity -= 1]
+    },
   },
 });
 
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
+export const { addToBasket, removeFromBasket, plusItem, minusItem } = basketSlice.actions;
 
 // Selectors - This is how we pull information from the Global store slice
 export const selectItems = (state) => state.basket.items;
