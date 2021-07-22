@@ -20,7 +20,7 @@ function ViewProduct({products}) {
     }
 
     return (
-        <div>
+        <div >
             <Head>
                 <title>Product - {product.title}</title>
             </Head>

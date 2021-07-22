@@ -7,9 +7,10 @@ import { MinusCircleIcon, PlusCircleIcon, ReceiptTaxIcon } from "@heroicons/reac
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import { useSession } from 'next-auth/client'
 
 function MyCart() {
-
+    const session = useSession();
     const cartItems = useSelector(selectItems);
     const dispatch = useDispatch();
 

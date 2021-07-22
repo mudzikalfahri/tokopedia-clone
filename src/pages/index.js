@@ -22,7 +22,7 @@ export default function Home({products}) {
     <div>
       <Head>
         <title>Tokopedia</title>
-        <link rel="icon" href="https://i.ibb.co/JdFnhW3/favicon.png" />
+        <link rel="icon" href="https://i.ibb.co/VqLCZ9J/logotokped.png" />
       </Head>
       { loading ? (
         <div className="w-full h-screen flex justify-center place-items-center relative">

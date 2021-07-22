@@ -6,7 +6,7 @@ import Link from 'next/link'
 function ProductItem({product}) {
     return (
         <Link href={'/viewproduct/' + product.id}>
-            <div className="flex flex-col p-3 shadow-md border rounded-md cursor-pointer group" >
+            <div className="flex flex-col p-3 shadow-md border rounded-md cursor-pointer group transform motion-safe:hover:scale-105 duration-200" >
                 <div className="flex place-items-center p-3 justify-center">
                     <Image src={product.image} height={150} width={150} objectFit="contain"/> 
                 </div>
