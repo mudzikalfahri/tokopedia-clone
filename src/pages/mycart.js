@@ -31,6 +31,7 @@ function MyCart() {
         <div>
             <Head>
                 <title>Keranjang Belanja</title>
+                <link rel="icon" href="https://i.ibb.co/VqLCZ9J/logotokped.png" />
             </Head>
             <Header />
             
@@ -104,7 +105,7 @@ function MyCart() {
                             
                         </div>
                         <div className="flex justify-center mb-4">
-                            <button className="w-11/12 py-3 rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
+                            <button disabled={session ? true : false} className="disabled:opacity-50 disabled:cursor-not-allowed w-11/12 py-3 rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
                                 <p className="text-md font-bold text-white">Beli ({cartItems.length})</p>
                             </button>
                         </div>
