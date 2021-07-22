@@ -1,19 +1,16 @@
 import Header from '../../components/Header';
 import Image from 'next/image';
 import { StarIcon, PlusCircleIcon, MinusCircleIcon, ChevronUpIcon, ChevronRightIcon } from '@heroicons/react/solid';
-import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '../../slices/basketSlice';
 import Head from 'next/head';
 import Footer from '../../components/Footer';
 
 
-function ViewProduct({products}) {
-    
-    const router = useRouter();
-    const {id} = router.query;
-    const product = products.find(product => product.id==id)
+function ViewProduct({title, category, price, description, image}) {
+
     const dispatch = useDispatch();
+    const product = {title, category, price, description, image};
 
     const addItemToBasket = () => {
         dispatch(addToBasket(product))
@@ -94,12 +91,10 @@ function ViewProduct({products}) {
     )
 }
 
-export async function getServerSideProps(context) {
-    const products = await fetch('https://fakestoreapi.com/products/').then(
+ViewProduct.getInitialProps = async ({query}) => {
+    const products = await fetch(`https://fakestoreapi.com/products/${query.id}`).then(
       (res) => res.json() );
-      return { props: {
-        products: products,
-      } };
+      return products;
 }
 
 export default ViewProduct;
