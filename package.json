@@ -9,20 +9,21 @@
   "dependencies": {
     "@heroicons/react": "^1.0.2",
     "@reduxjs/toolkit": "1.5.0",
+    "@stripe/stripe-js": "^1.16.0",
     "@tailwindcss/line-clamp": "^0.2.0",
+    "axios": "^0.21.1",
     "firebase": "^8.7.1",
     "firebase-admin": "^9.8.0",
     "next": "latest",
     "next-auth": "^3.27.3",
     "nprogress": "^0.2.0",
     "react": "17.0.1",
-    "react-currency-format": "^1.0.0",
-    "react-currency-formatter": "^1.1.0",
     "react-dom": "17.0.1",
     "react-redux": "7.2.2",
     "react-responsive-carousel": "^3.2.19",
     "react-spinner": "^0.2.7",
-    "react-spinners": "^0.11.0"
+    "react-spinners": "^0.11.0",
+    "stripe": "^8.165.0"
   },
   "license": "MIT",
   "devDependencies": {

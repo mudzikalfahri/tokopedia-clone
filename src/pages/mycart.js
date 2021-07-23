@@ -7,12 +7,30 @@ import { MinusCircleIcon, PlusCircleIcon, ReceiptTaxIcon } from "@heroicons/reac
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "../components/Footer";
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/client';
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function MyCart() {
-    const session = useSession();
+    const [session] = useSession();
     const cartItems = useSelector(selectItems);
     const dispatch = useDispatch();
+
+    const createCheckoutSession = async () => {
+        const stripe = await stripePromise;
+        const checkoutSession = await axios.post('/api/create-checkout-session',
+        {
+            items: cartItems,
+            email: session.user.email
+        })
+        
+        const result = await stripe.redirectToCheckout({
+            sessionId: checkoutSession.data.id
+        })
+
+        if (result.error) alert(result.error.message);
+    }
 
     const remove = (product) => {
         dispatch(removeFromBasket(product));
@@ -62,7 +80,7 @@ function MyCart() {
                                 <div className="px-3 flex flex-col justify-between">
                                     <p className="text-md text-gray-600">{item.title} - {item.quantity}pcs</p>
                                     <p className="text-sm text-gray-600">{item.quantity}pcs</p>
-                                    <p className="text-sm font-bold text-gray-700">Rp{item.price * item.quantity}rb</p>
+                                    <p className="text-sm font-bold text-gray-700">$ {item.price * item.quantity}</p>
                                 </div>
 
                             </div>
@@ -95,17 +113,17 @@ function MyCart() {
                             <h2 className="font-bold text-gray-700 mb-1">Ringkasan belanja</h2>
                             <div className="flex justify-between py-3">
                                 <p className="text-gray-400">Total Harga({cartItems.reduce((q,i) => (q + i.quantity),0)} barang)</p>
-                                <p className="text-gray-400">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price * cartItem.quantity),0)}rb</p>
+                                <p className="text-gray-400">$ {cartItems.reduce((sub, cartItem) => (sub + cartItem.price * cartItem.quantity),0)}</p>
                             </div>
                             <hr className="my-1"/>
                             <div className="flex justify-between py-3">
                                 <p className="font-bold text-gray-700">Total Harga</p>
-                                <p className="font-bold text-gray-700">Rp.{cartItems.reduce((sub, cartItem) => (sub + cartItem.price * cartItem.quantity),0)}rb</p>
+                                <p className="font-bold text-gray-700">$ {cartItems.reduce((sub, cartItem) => (sub + cartItem.price * cartItem.quantity),0)}</p>
                             </div>
                             
                         </div>
                         <div className="flex justify-center mb-4">
-                            <button disabled={session ? true : false} className="disabled:opacity-50 disabled:cursor-not-allowed w-11/12 py-3 rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
+                            <button role="link" onClick={createCheckoutSession} disabled={!session} className="disabled:opacity-50 disabled:cursor-not-allowed w-11/12 py-3 rounded-md bg-tokped_green filter hover:brightness-95 duration-500">
                                 <p className="text-md font-bold text-white">Beli ({cartItems.length})</p>
                             </button>
                         </div>

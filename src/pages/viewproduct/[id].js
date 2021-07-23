@@ -7,10 +7,10 @@ import Head from 'next/head';
 import Footer from '../../components/Footer';
 
 
-function ViewProduct({title, category, price, description, image}) {
+function ViewProduct({title, category, price, description, image, id}) {
 
     const dispatch = useDispatch();
-    const product = {title, category, price, description, image};
+    const product = {title, category, price, description, image, id};
 
     const addItemToBasket = () => {
         dispatch(addToBasket(product))
@@ -40,7 +40,7 @@ function ViewProduct({title, category, price, description, image}) {
                         <StarIcon className="h-5 w-5 text-yellow-400"/>
                         <p className="text-sm text-gray-400 ml-1">4.8 (800 ulasan)</p>
                     </div>
-                    <div className="my-2 text-3xl font-bold text-gray-700">Rp {product.price}rb</div>
+                    <div className="my-2 text-3xl font-bold text-gray-700">$ {product.price}</div>
                     <p className="text-xs font-semibold text-tokped_green bg-green-100 w-min p-1 rounded-sm">Cashback</p>
                     <div className="mt-3 flex border-t border-b border-gray-300">
                         <div className="w-20 h-8 text-sm font-bold text-tokped_green flex place-items-center justify-center border-b-2 border-tokped_green">Detail</div>
@@ -75,7 +75,7 @@ function ViewProduct({title, category, price, description, image}) {
                         {/* subtotal */}
                         <div className="flex place-items-center justify-between">
                             <p className="text-md text-gray-400">Subtotal</p>
-                            <div className="my-2 text-lg font-bold text-gray-700">Rp {product.price}rb</div>
+                            <div className="my-2 text-lg font-bold text-gray-700">$ {product.price}</div>
                         </div>
                         {/* button */}
                         <div className="flex w-full">

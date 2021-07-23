@@ -11,7 +11,7 @@ function ProductItem({product}) {
                     <Image src={product.image} height={150} width={150} objectFit="contain"/> 
                 </div>
                 <h4 className="text-xs font-semibol line-clamp-2 pb-1">{product.title}</h4>
-                <p className="text-sm font-bold text-gray-700 pb-1">Rp {product.price}rb</p>
+                <p className="text-sm font-bold text-gray-700 pb-1">$ {product.price}</p>
                 <p className="text-xs font-semibold text-tokped_green bg-green-100 w-min p-1 rounded-sm mb-1">Cashback</p>
                 <div className="h-5 overflow-hidden relative">
                     <p className="absolute top-0 group-hover:-top-8 duration-300 text-xs text-gray-400 pb-1">Indonesia</p>
